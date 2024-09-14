@@ -19,6 +19,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/edit_lead/{id}', [AdminController::class, 'edit_lead']);
     Route::get('/view_lead/{id}', [AdminController::class, 'view_lead']);
     Route::get('/convert_lead/{id}', [AdminController::class, 'convert_lead']);
+    Route::post('/convert_lead/{id}', [AdminController::class, 'convert_lead']);
+    Route::get('/manage_accounts', [AdminController::class, 'manage_accounts']);
+    Route::get('/manage_deals', [AdminController::class, 'manage_deals']);
+    Route::get('/manage_contacts', [AdminController::class, 'manage_contacts']);
+
+    Route::get('/delete_contact/{id}', [AdminController::class, 'delete_contact']);
+    Route::get('/delete_account/{id}', [AdminController::class, 'delete_account']);
+    Route::get('/delete_deal/{id}', [AdminController::class, 'delete_deal']);
 
 });
 

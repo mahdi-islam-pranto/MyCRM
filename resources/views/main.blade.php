@@ -32,7 +32,7 @@
 
 				<ul class="sidebar-nav">
 					<li class="sidebar-header">
-						Pages
+						User
 					</li>
 
 					<li class="sidebar-item active">
@@ -75,31 +75,29 @@
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-typography.html">
-              <i class="align-middle" data-feather="align-left"></i> <span class="align-middle">Typography</span>
-            </a>
-					</li>
+					
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="icons-feather.html">
-              <i class="align-middle" data-feather="coffee"></i> <span class="align-middle">Icons</span>
-            </a>
-					</li>
+					
 
 					<li class="sidebar-header">
-						Plugins & Addons
+						Actions
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="charts-chartjs.html">
-              <i class="align-middle" data-feather="bar-chart-2"></i> <span class="align-middle">Charts</span>
+						<a class="sidebar-link" href="{{url('/manage_deals')}}">
+              <i class="align-middle" data-feather="thumbs-up"></i> <span class="align-middle">Deals</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="maps-google.html">
-              <i class="align-middle" data-feather="map"></i> <span class="align-middle">Maps</span>
+						<a class="sidebar-link" href="{{url('/manage_contacts')}}">
+              <i class="align-middle" data-feather="phone"></i> <span class="align-middle">Contacts</span>
+            </a>
+					</li>
+
+					<li class="sidebar-item">
+						<a class="sidebar-link" href="{{url('/manage_accounts')}}">
+              <i class="align-middle" data-feather="folder"></i> <span class="align-middle">Accounts</span>
             </a>
 					</li>
 				</ul>
@@ -254,7 +252,7 @@
               </a>
 
 							<a class="nav-link dropdown-toggle d-none d-sm-inline-block" href="#" data-bs-toggle="dropdown">
-                <img src="img/avatars/avatar.jpg" class="avatar img-fluid rounded me-1" alt="Charles Hall" /> <span class="text-dark">Charles Hall</span>
+ <span class="text-dark">Mahdi Islam</span>
               </a>
 							<div class="dropdown-menu dropdown-menu-end">
 								<a class="dropdown-item" href="pages-profile.html"><i class="align-middle me-1" data-feather="user"></i> Profile</a>

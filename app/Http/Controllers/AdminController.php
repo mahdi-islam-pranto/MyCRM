@@ -8,6 +8,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use App\Models\LeadModel;
+use App\Models\AccountModel;
+use App\Models\ContactModel;
+use App\Models\DealModel;
 
 
 
@@ -145,15 +148,117 @@ class AdminController extends Controller
     }
 
 
-    public function convert_lead($id){
+    public function convert_lead($id , Request $req){
         $lead = LeadModel::find($id);
         if($lead == ""){
             return redirect('/manage_leads');
         }
+
+        $submit = $req['submit'];
+        if($submit == 'submit') {
+            $req->validate([
+                'ammount' => 'required',
+                'deal_name' => 'required',
+                'closing_date' => 'required',
+                'deal_stage' => 'required',
+                
+            ]);
+
+            // create account
+            $account = new AccountModel();
+            $account -> account_name = $lead -> company;
+            $account -> phone = $lead -> phone;
+            
+            $account -> save();
+            $account_id = $account -> id;
+
+            // create contact
+            $contact = new ContactModel();
+            $contact -> contact_name = $lead -> first_name . " " . $lead -> last_name;
+            $contact -> email = $lead -> email;
+            $contact -> phone = $lead -> phone;
+            $contact -> account_id = $account_id;
+            $contact -> save();
+            $contact_id = $contact -> id;
+
+            // create deal
+            $deal = new DealModel();
+            $deal -> ammount = $req['ammount'];
+            $deal -> deal_name = $req['deal_name'];
+            $deal -> closing_date = $req['closing_date'];
+            $deal -> deal_stage = $req['deal_stage'];
+            $deal -> account_id = $account_id;
+            $deal -> contact_id = $contact_id;
+            $deal -> save();
+
+
+            // delete old lead
+            $lead -> delete();
+
+            return redirect('/manage_deals');
+            
+            
+        }
+
         $data['lead_details'] = $lead;
         return view('convert_lead')->with($data);
         
     }
 
+
+    public function manage_accounts(){
+        $data['accounts'] = AccountModel::all();
+        return view('manage_accounts')->with($data);
+    }
+
+
+    public function manage_deals(){
+        $data['deals'] = DealModel::all();
+        return view('manage_deals')->with($data);
+    }
+
+
+    public function manage_contacts(){
+        $data['contacts'] = ContactModel::all();
+        return view('manage_contacts')->with($data);
+    }
+
+
+    public function delete_contact($id){
+        $contact = ContactModel::find($id);
+        if($contact == ""){
+            return redirect('/manage_contacts');
+        }else{
+            $contact->delete();
+            return redirect('/manage_contacts');
+        }
+        
+    }
+
+    public function delete_account($id){
+        $account = AccountModel::find($id);
+        if($account == ""){
+            return redirect('/manage_accounts');
+        }else{
+            $account->delete();
+            return redirect('/manage_accounts');
+        }
+        
+    }
+
+
+    public function delete_deals($id){
+        $deal = DealModel::find($id);
+        if($deal == ""){
+            return redirect('/manage_deals');
+        }else{
+            $deal->delete();
+            return redirect('/manage_deals');
+        }
+        
+    }
+
+
+    
 
 }
