@@ -16,7 +16,9 @@
 
 	<title>My CRM</title>
 
-	<link href="css/app.css" rel="stylesheet">
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+	{{-- <link href="css/app.css" rel="stylesheet"> --}}
 	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
@@ -40,48 +42,36 @@
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-profile.html">
-              <i class="align-middle" data-feather="user"></i> <span class="align-middle">Leads</span>
+						<a class="sidebar-link" href="{{url('/login')}}">
+              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Login</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-in.html">
-              <i class="align-middle" data-feather="log-in"></i> <span class="align-middle">Add Lead</span>
+						<a class="sidebar-link" href="{{url('/logout')}}">
+              <i class="align-middle" data-feather="log-out"></i> <span class="align-middle">Logout</span>
             </a>
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-sign-up.html">
-              <i class="align-middle" data-feather="user-plus"></i> <span class="align-middle">Sign Up</span>
-            </a>
-					</li>
+					
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="pages-blank.html">
-              <i class="align-middle" data-feather="book"></i> <span class="align-middle">Blank</span>
-            </a>
-					</li>
+					
 
 					<li class="sidebar-header">
-						Leads Management
+						Lead Management
 					</li>
 
-					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-buttons.html">
-                            <i class="align-middle" data-feather="user"></i> <span class="align-middle">Leads</span>
-            </a>
-					</li>
+					
 
 					<li class="sidebar-item">
 						<a class="sidebar-link" href="{{url('/add-lead')}}">
-                            <i class="align-middle" data-feather="user"></i>  <span class="align-middle">Add Lead</span>
+                            <i class="align-middle" data-feather="user-plus"></i>  <span class="align-middle">Add Lead</span>
             </a>
 					</li>
 
 					<li class="sidebar-item">
-						<a class="sidebar-link" href="ui-cards.html">
-              <i class="align-middle" data-feather="grid"></i> <span class="align-middle">Manage Lead</span>
+						<a class="sidebar-link" href="{{url('/manage_leads')}}">
+              <i class="align-middle" data-feather="edit"></i> <span class="align-middle">Manage Leads</span>
             </a>
 					</li>
 
@@ -114,17 +104,7 @@
 					</li>
 				</ul>
 
-				<div class="sidebar-cta">
-					<div class="sidebar-cta-content">
-						<strong class="d-inline-block mb-2">Upgrade to Pro</strong>
-						<div class="mb-3 text-sm">
-							Are you looking for more components? Check out our premium version.
-						</div>
-						<div class="d-grid">
-							<a href="upgrade-to-pro.html" class="btn btn-primary">Upgrade to Pro</a>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</nav>
 
@@ -299,22 +279,22 @@
 					<div class="row text-muted">
 						<div class="col-6 text-start">
 							<p class="mb-0">
-								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>AdminKit</strong></a> - <a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Bootstrap Admin Template</strong></a>								&copy;
+								<a class="text-muted" href="https://adminkit.io/" target="_blank"><strong>Mahdi Islam</strong></a> - <a class="text-muted" href="" target="_blank"><strong></strong></a>								&copy;
 							</p>
 						</div>
 						<div class="col-6 text-end">
 							<ul class="list-inline">
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Support</a>
+									<a class="text-muted" href="" target="_blank">Support</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Help Center</a>
+									<a class="text-muted" href="" target="_blank">Help Center</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Privacy</a>
+									<a class="text-muted" href="" target="_blank">Privacy</a>
 								</li>
 								<li class="list-inline-item">
-									<a class="text-muted" href="https://adminkit.io/" target="_blank">Terms</a>
+									<a class="text-muted" href="" target="_blank">Terms</a>
 								</li>
 							</ul>
 						</div>
@@ -325,6 +305,12 @@
 	</div>
 
 	<script src="js/app.js"></script>
+	<script src="https://unpkg.com/feather-icons"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        feather.replace();
+    });
+</script>
 
 	<script>
 		document.addEventListener("DOMContentLoaded", function() {

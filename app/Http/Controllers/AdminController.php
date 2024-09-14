@@ -80,4 +80,57 @@ class AdminController extends Controller
         $data['leads'] = LeadModel::all();
         return view('manage_leads')->with($data);
     }
+
+    public function delete_lead($id){
+        $lead = LeadModel::find($id);
+        if($lead == ""){
+            return redirect('/manage_leads');
+        }else{
+            $lead->delete();
+            return redirect('/manage_leads');
+        }
+        
+    }
+
+
+    public function edit_lead($id, Request $req){
+        $lead = LeadModel::find($id);
+        if($lead == ""){
+            return redirect('/manage_leads');
+        }
+
+        $submit = $req['submit'];
+        if($submit == 'submit') {
+            $req->validate([
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'title' => 'required',
+                'company' => 'required',
+                'phone' => 'required',
+            ]);
+
+           
+            $lead -> first_name = $req['first_name'];
+            $lead -> last_name = $req['last_name'];
+            $lead -> title = $req['title'];
+            $lead -> company = $req['company'];
+            $lead -> phone = $req['phone'];
+            $lead -> email = $req['email'];
+            $lead -> lead_source = $req['lead_source'];
+            $lead -> lead_status = $req['lead_status'];
+            $lead -> address = $req['address'];
+            $lead -> description = $req['description'];
+            $lead -> save();
+
+            return redirect('/manage_leads');
+
+        }
+
+
+        $data['lead_details'] = $lead;
+        return view('edit_lead')->with($data);
+        
+    }
+
+
 }

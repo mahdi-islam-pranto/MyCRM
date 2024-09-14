@@ -14,6 +14,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/add-lead', [AdminController::class, 'add_lead']);
     Route::get('/manage_leads', [AdminController::class, 'manage_leads']);
+    Route::get('/delete-lead/{id}', [AdminController::class, 'delete_lead']);
+    Route::get('/edit_lead/{id}', [AdminController::class, 'edit_lead']);
+    Route::post('/edit_lead/{id}', [AdminController::class, 'edit_lead']);
 
 });
 

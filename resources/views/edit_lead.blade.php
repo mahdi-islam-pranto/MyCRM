@@ -14,7 +14,7 @@
         <div class="container-fluid p-0">
 
             <div class="mb-3">
-                <h1 class="h3 d-inline align-middle">ADD NEW LEAD</h1>
+                <h1 class="h3 d-inline align-middle">EDIT LEAD</h1>
                 
             </div>
             <div class="row">
@@ -25,7 +25,8 @@
                             <h5 class="card-title mb-0">First Name  <span class="text-danger">*</span></h5> 
                         </div>
                         <div class="card-body">
-                            <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{old('first_name')}}">
+                            <input type="text" class="form-control" placeholder="First Name" name="first_name" value="{{$lead_details->first_name}}">
+
                             @error('first_name')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -39,7 +40,7 @@
                             <h5 class="card-title mb-0">Title  <span class="text-danger">*</span></h5>
                         </div>
                         <div class="card-body">
-                            <input type="text" class="form-control" placeholder="Title" name="title" value="{{old('title')}}">
+                            <input type="text" class="form-control" placeholder="Title" name="title" value="{{$lead_details->title}}">
                             @error('title')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -52,7 +53,7 @@
                             <h5 class="card-title mb-0">Description</h5>
                         </div>
                         <div class="card-body">
-                            <input type="text" class="form-control" placeholder="description" name="description" value="{{old('description')}}">
+                            <input type="text" class="form-control" placeholder="description" name="description" value="{{$lead_details->description}}">
                             
                         </div>
                     </div>
@@ -62,7 +63,7 @@
                             <h5 class="card-title mb-0">Company <span class="text-danger">*</span></h5>
                         </div>
                         <div class="card-body">
-                            <input type="text" class="form-control" placeholder="Company" name="company" value="{{old('company')}}">
+                            <input type="text" class="form-control" placeholder="Company" name="company" value="{{$lead_details->company}}">
                             @error('company')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -74,7 +75,7 @@
                             <h5 class="card-title mb-0">Email</h5>
                         </div>
                         <div class="card-body">
-                            <input type="text" class="form-control" placeholder="Email" name="email">
+                            <input type="text" class="form-control" placeholder="Email" name="email" value="{{$lead_details->email}}">
                         </div>
                     </div>
 
@@ -88,7 +89,7 @@
                             <h5 class="card-title mb-0">Address</h5>
                         </div>
                         <div class="card-body">
-                            <textarea class="form-control" rows="2" placeholder="Address" name="address"></textarea>
+                            <textarea class="form-control" rows="2" placeholder="Address" name="address" value="{{$lead_details->address}}"></textarea>
                         </div>
                     </div>
 
@@ -107,7 +108,7 @@
                             <h5 class="card-title mb-0">Last Name <span class="text-danger">*</span></h5>
                         </div>
                         <div class="card-body">
-                            <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{old('last_name')}}">
+                            <input type="text" class="form-control" placeholder="Last Name" name="last_name" value="{{$lead_details->last_name}}">
                             @error('last_name')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -121,7 +122,7 @@
                             <h5 class="card-title mb-0">Phone <span class="text-danger">*</span></h5>
                         </div>
                         <div class="card-body">
-                            <input type="text" class="form-control" placeholder="Phone" name="phone" value="{{old('phone')}}">
+                            <input type="text" class="form-control" placeholder="Phone" name="phone" value="{{$lead_details->phone}}">
                             @error('phone')
                             <small class="text-danger">{{$message}}</small>
                             @enderror
@@ -141,9 +142,15 @@
                         <div class="card-body">
                             <select class="form-select mb-3" name="lead_source">
                                 @foreach($lead_source as $single)
+                                @if($single == $lead_details->lead_source)
                                 
-                                                <option value="{{$single}}">{{$single}}</option>
+                                                <option value="{{$single}}" selected>{{$single}}</option>
 
+                                @else
+
+                                                <option value="{{$single}}" >{{$single}}</option>
+
+                                @endif
                                 @endforeach
                             </select>
 
@@ -177,8 +184,18 @@
                         <div class="card-body">
                             <select class="form-select mb-3" name="lead_status">
                                 @foreach($lead_status as $single)
+
+                                @if($single == $lead_details->lead_status)
                                 
-                                                <option value="{{$single}}">{{$single}}</option>
+                                                <option value="{{$single}}" selected>{{$single}}</option>
+
+                                @else
+
+                                                <option value="{{$single}}" >{{$single}}</option>
+
+                                @endif
+                                
+                                               
 
                                 @endforeach
                             </select>
@@ -197,7 +214,7 @@
 
             <div class="d-grid gap-2 mt-3 ml-5 mr-5">
 											
-                <button type="submit" class="btn btn-lg btn-primary" name="submit" value="submit">ADD LEAD</button>
+                <button type="submit" class="btn btn-lg btn-primary" name="submit" value="submit">UPDATE LEAD</button>
             </div>
 
 
