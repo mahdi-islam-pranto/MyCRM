@@ -27,7 +27,7 @@
                         @foreach($leads as $single)
                         <tr>
                             
-                            <td class="d-none d-xl-table-cell">{{$single->company}}</td>
+                            <td ><a href="{{url('/view_lead/'.$single->id)}}">{{$single->company}}</a> </td>
                             <td class="d-none d-xl-table-cell">{{$single->title}}</td>
                             <td class="d-none d-xl-table-cell">{{$single->email}}</td>
                             <td>{{$single->phone}}</span></td>
