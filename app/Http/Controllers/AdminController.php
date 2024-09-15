@@ -38,7 +38,12 @@ class AdminController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        $leadsCount = LeadModel::count();
+        $dealsCount = DealModel::count();
+        $contactsCount = ContactModel::count();
+
+    return view('dashboard', compact('leadsCount', 'dealsCount', 'contactsCount'));
+        
     }
 
     public function logout()
